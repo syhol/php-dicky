@@ -1,0 +1,19 @@
+{
+    "name": "syhol/php-dicky",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Simon Holloway",
+            "email": "simon@syhol.io"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Syhol\\PhpDicky\\" : "src/"
+        }
+    },
+    "require": {
+        "psr/container": "^1.0"
+    }
+}
