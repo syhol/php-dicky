@@ -22,6 +22,8 @@ class Create implements Resolvable
 
     public function resolve(Container $container)
     {
-        return new $this->class;
+        $arguments = $container->resolve([$this->class. '__construct']);
+
+        return new $this->class(...$arguments);
     }
 }

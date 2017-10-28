@@ -22,6 +22,6 @@ class Factory implements Resolvable
 
     public function resolve(Container $container)
     {
-        return ($this->callable)($container);
+        return $container->call($this->callable);
     }
 }

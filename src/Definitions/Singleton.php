@@ -28,6 +28,6 @@ class Singleton implements Resolvable
             return $this->instance;
         }
 
-        return $this->instance = ($this->callable)($container);
+        return $this->instance = $container->call($this->callable);
     }
 }

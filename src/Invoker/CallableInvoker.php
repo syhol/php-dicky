@@ -23,17 +23,21 @@ class CallableInvoker implements Invoker
 
     public function call(callable $callable, array $inputArgs = [])
     {
+        return $callable(...$this->resolve($callable, $inputArgs));
+    }
+
+    public function resolve(callable $callable, array $inputArgs = [])
+    {
         $resolvedArgs = [];
         $reflect = (new CallableReflectionFactory)->parse($callable);
 
         foreach ($this->resolvers as $resolver) {
             $resolvedArgs = $resolver->resolveArguments($resolvedArgs, $reflect, $inputArgs);
-//            $callable = $resolver->resolveCallable($callable, $reflect, $inputArgs);
         }
 
         $this->checkResolutions($reflect, $resolvedArgs);
 
-        return $callable(...$resolvedArgs);
+        return $resolvedArgs;
     }
 
     /**
